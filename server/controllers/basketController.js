@@ -22,7 +22,7 @@ class BasketController {
         await Basket.findOne({where: {id}})
             .then((basket) => {name = basket.id; basket.destroy()})
             .then(() => res.status(200).json({message: `Запис '${name}' видалено`}))
-            .catch((e) => next(ApiError.internal("Помилка, поля з таким Basket не існує.")))
+            .catch(() => next(ApiError.internal("Помилка, поля з таким Basket не існує.")))
     }
 }
 

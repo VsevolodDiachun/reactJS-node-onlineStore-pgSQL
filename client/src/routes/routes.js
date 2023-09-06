@@ -36,23 +36,3 @@ const publicRoutes = [
 export const authorizedRoutes = [...publicRoutes, ...protectedRoutes]
 
 export const unAuthorizedRoutes = [ ...publicRoutes]
-
-
-// const protectedRoutes = [
-//     {path: ADMIN_ROUTE, element: <Admin/>},
-//     {path: BASKET_ROUTE, element: <Basket/>}
-// ]
-//
-// const authRoutes = [
-//     {path: LOGIN_ROUTE, element: <Auth/>},
-//     {path: REGISTRATION_ROUTE, element: <Auth/>},
-// ]
-//
-// const publicRoutes = [
-//     {path: SHOP_ROUTE, element: <Shop/>, errorElement: <ErrorPage/>},
-//     {path: DEVICE_ROUTE, element: <DevicePage/>},
-// ]
-//
-// export const authorizedRoutes = [...protectedRoutes, ...publicRoutes, ...authRoutes]
-//
-// export const unAuthorizedRoutes = [...authRoutes, ...publicRoutes]

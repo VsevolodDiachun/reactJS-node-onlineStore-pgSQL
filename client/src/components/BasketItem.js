@@ -14,20 +14,16 @@ const BasketItem = (basket) => {
     const {isUserId} = useSelector(data => data.userReducer)
     const {ASetBasket, ASetBasketCount} = useAction()
     const navigate = useNavigate()
-    //console.log(basket)
-    //console.log(isBasketCount)
 
     const [basketCount, setBasketCount] = useState('0')
     const [globalRating, setGlobalRating] = useState(0);
     const [rating, setRating] = useState(0);
-    const [countGoodsInBasket, setCountGoodsInBasket] = useState(0);
     useEffect(() => {
         try {
             const devicesCount = isBasketCount.filter(data => data.deviceId === basket.id)
             setBasketCount(devicesCount[0].quantity)
         } catch (e) {}
     }, [isBasketCount])
-        //const devicesCount = isBasketCount.filter(data => data.deviceId === basket.id)
         const brandData = isBrands.filter(data => data.id === basket.brandId)
 
 
@@ -58,11 +54,6 @@ const BasketItem = (basket) => {
         }
     }, [isRating, isRatingCount])
 
-
-
-    //console.log(brandData)
-
-    //console.log(isBrands)
     const delDevice = () => {
         deleteSelectDevice({deviceId: basket.id, userId: isUserId})
             .then(data => console.log(data))
@@ -87,7 +78,6 @@ const BasketItem = (basket) => {
 
     return (
         <Col className="mt-3 me-3"
-             // sm={4} md={4}
             lg={2}
         >
             <Card style={{width: 150, cursor: "pointer"}} border={"light"} onClick={() => navigate(DEVICE_ROUTE + '/' + basket.id)}>

@@ -26,8 +26,6 @@ const DeviceList = () => {
         fetchBrand().then(data => ASetBrands(data))
     }, [isUserId])
 
-    //console.log(isDevices)
-
     return (
         <div className="d-flex flex-wrap">
             {isDevices.map(device =>

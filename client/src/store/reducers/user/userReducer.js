@@ -1,5 +1,4 @@
 import {userActionEnum} from "./types";
-import {deviceActionEnum} from "../device/types";
 
 const initialState = {
     isAuth: false,

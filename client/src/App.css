@@ -1,8 +1,8 @@
 
 
 :root {
-    --primary-color: #ff0000; /* Ваш бажаний основний колір */
-    --secondary-color: #00ff00; /* Ваш бажаний додатковий колір */
+    --primary-color: #ff0000;
+    --secondary-color: #00ff00;
 }
 
 .star-rating {

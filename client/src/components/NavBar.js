@@ -18,7 +18,6 @@ const NavBar = () => {
         localStorage.removeItem('token')
     }
 
-
     return (
         <Navbar bg="dark" variant="dark" >
             <Container>

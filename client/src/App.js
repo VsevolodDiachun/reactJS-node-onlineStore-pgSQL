@@ -6,7 +6,6 @@ import {check} from "./http/userAPI";
 import {Spinner} from "react-bootstrap";
 import {useAction} from "./hooks/useAction";
 import jwt_decode from "jwt-decode";
-import {devicesFromBasket, fetchBrand} from "./http/deviceAPI";
 import {useSelector} from "react-redux";
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
           ASetAuth(true)
           if (token) {
             const decode = jwt_decode(token)
-            console.log(decode)
             ASetEmail(decode.email)
             ASetUserId(decode.id)
             ASetRole(decode.role)

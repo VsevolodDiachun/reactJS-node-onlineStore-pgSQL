@@ -44,7 +44,6 @@ class DeviceController {
     async getAll(req, res, next) {
         try {
             let {brandId, typeId, limit, page, userId} = req.query
-            //res.json(brandId, typeId, limit, page, userId)
             page = page || 1
             limit = limit || 9
             let offset = page * limit - limit
@@ -55,7 +54,6 @@ class DeviceController {
             const findRatingByDevices = async (data) => {
                 device = data
                 const result = data.rows.map(item => item.id)
-                //res.json(result)
                 await Rating.findAll({where: {deviceId: result}})
                     .then(data => ratingByDevice = data)
                     .then(() => Rating.findAll(
@@ -67,7 +65,6 @@ class DeviceController {
                             where: { deviceId: result },
                             group: ['deviceId'],}))
                         .then(data => ratingByCount = data)
-                        //.then(data => res.json(data))
                 return 0
             }
 
@@ -149,24 +146,3 @@ class DeviceController {
 }
 
 module.exports = new DeviceController()
-
-
-
-
-
-// const findRatingByDevices = async (data) => {
-//     device = data
-//     const result = data.rows.map(item => item.id)
-//     ratingByDevice = await Rating.findAll({where: {deviceId: result}})
-//         .then(data => Rating.findAll(
-//             {attributes:
-//                     ['rate',
-//                         [Sequelize.fn('COUNT', Sequelize.col('rate')),
-//                             'quantity'],
-//                     ],
-//                 where: { deviceId: data, userId },
-//                 group: ['rate'],}))
-//         .then(data => res.json(data))
-//     res.json(ratingByDevice)
-//     return 0
-// }

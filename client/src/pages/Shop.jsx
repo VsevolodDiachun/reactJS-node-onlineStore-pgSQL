@@ -4,7 +4,7 @@ import TypeBar from "../components/TypeBar";
 import BrandBar from "../components/BrandBar";
 import DeviceList from "../components/DeviceList";
 import {useAction} from "../hooks/useAction";
-import {devicesFromBasket, fetchAllRating, fetchBrand, fetchDevice, fetchTypes} from "../http/deviceAPI";
+import {fetchBrand, fetchDevice, fetchTypes} from "../http/deviceAPI";
 import Pages from "../components/Pages";
 import {useSelector} from "react-redux";
 
@@ -18,12 +18,6 @@ const Shop = () => {
         fetchBrand().then(data => ASetBrands(data)).catch(e => console.log('errorA'))
     }, [])
 
-    // useEffect(() => {
-    //     fetchAllRating({userId: 43})
-    //         .then(data => ASetRating(data))
-    //         .catch(() => 'error rating fetch')
-    // }, [])
-
     useEffect(() => {
         fetchDevice(isSelectedType, isSelectedBrand, isPage, isLimit, isUserId)
             .then(data => {
@@ -35,9 +29,6 @@ const Shop = () => {
                 ASetRatingCount(data.ratingByCount)
             }).catch(e => console.log('errorA'))
     }, [isSelectedType, isSelectedBrand, isPage])
-
-        //console.log(isDevices)
-    //console.log(isRating)
 
     return (
         <Container>

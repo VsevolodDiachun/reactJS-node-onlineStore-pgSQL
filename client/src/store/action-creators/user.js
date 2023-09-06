@@ -1,5 +1,4 @@
 import {userActionEnum} from "../reducers/user/types";
-import {deviceActionEnum} from "../reducers/device/types";
 
 export const userActionCreators = {
     ASetAuth: (payload) => ({type: userActionEnum.SET_AUTH, payload}),

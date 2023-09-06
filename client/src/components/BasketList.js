@@ -7,12 +7,6 @@ import {useAction} from "../hooks/useAction";
 
 const BasketList = () => {
     const {isBasket} = useSelector(state => state.deviceReducer)
-    const {isUserId} = useSelector(state => state.userReducer)
-    const {ASetBrands, ASetBasket, ASetBasketCount} = useAction()
-
-
-
-    //console.log(isBasket)
 
     return (
         <div className="d-flex flex-wrap">

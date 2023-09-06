@@ -12,6 +12,5 @@ export const deviceActionCreators = {
     ASetPage: (payload) => ({type: deviceActionEnum.SET_PAGE, payload}),
     ASetTotalCount: (payload) => ({type: deviceActionEnum.SET_TOTAL_COUNT, payload}),
     ASetLimit: (payload) => ({type: deviceActionEnum.SET_LIMIT, payload}),
-    //ASetRatingDevice: (payload) => ({type: deviceActionEnum.SET_RATING_DEVICE, payload}),
     ASetRatingCount: (payload) => ({type: deviceActionEnum.SET_RATING_COUNT, payload})
 }

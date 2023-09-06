@@ -5,11 +5,9 @@ import {devicesFromBasket, fetchBrand} from "../http/deviceAPI";
 import {useAction} from "../hooks/useAction";
 import BasketList from "../components/BasketList";
 import {useSelector} from "react-redux";
-import {useLocation, useNavigate} from "react-router-dom";
 
 const Basket = () => {
     const {isUserId} = useSelector(state => state.userReducer)
-    const {isBasketCount, isBasket} = useSelector(state => state.deviceReducer)
     const {ASetBasket, ASetBasketCount, ASetBrands, ASetUserId, ASetRating, ASetRatingCount} = useAction()
 
     useEffect(() => {

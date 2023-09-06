@@ -1,4 +1,4 @@
-const {Rating, BasketDevice} = require("../DataBase/models");
+const {Rating} = require("../DataBase/models");
 const ApiError = require("../error/ApiError");
 const {Sequelize} = require("sequelize");
 
@@ -55,22 +55,13 @@ class ratingController {
                     group: ['deviceId']}))
             .then(ratingCount => res.json({ratingOneGlobal, ratingCount}))
             .catch(() => res.json('error'))
-
-        // new Promise((resolve, reject) => {
-        //         const data = ratingData;
-        //         resolve(data);
-        // }).then(data => data.map(item => item.deviceId))
-
-
     }
 
     async getAll(req, res, next) {
         try {
             const {userId} = req.body
-
             let ratingData
             await Rating.findAll()
-                //.then(data => res.json(data))
                 .then(data => ratingData = data)
                 .then(data => data.map(item => item.deviceId))
                 .then(data => Rating.findAll(

@@ -5,7 +5,7 @@ import {useParams} from "react-router";
 import {
     countDeviceFromBasket,
     createBasketDevice,
-    createOrUpdateRatingGoods, fetchDevice,
+    createOrUpdateRatingGoods,
     fetchOneDevice,
     fetchOneGlobalRating
 } from "../http/deviceAPI";
@@ -33,8 +33,8 @@ const DevicePage = () => {
     const [middleRating, setMiddleRating] = useState(0)
     const [personalRating, setPersonalRating] = useState(0)
     const {isUserId} = useSelector(state => state.userReducer)
-    const {isBasketCount, isRating, isRatingCount, isSelectedType, isSelectedBrand, isPage, isLimit} = useSelector(state => state.deviceReducer)
-    const {ASetBasketCount, ASetRating, ASetRatingCount} = useAction()
+    const {isBasketCount} = useSelector(state => state.deviceReducer)
+    const {ASetBasketCount} = useAction()
     const {id} = useParams()
 
     const addInBasket = () => {
@@ -43,7 +43,6 @@ const DevicePage = () => {
             .then(data => {ASetBasketCount(data[0].quantity)})
             .catch(() => console.log('error'))
     }
-    //console.log(isBasketCount)
 
     useEffect(() => {
         fetchOneDevice(id).then(data => setDevice(data))
@@ -56,7 +55,6 @@ const DevicePage = () => {
                 .catch(() => console.log('error'))
         }
     }, [isUserId])
-    //console.log(isUserId)
 
     useEffect(() => {
         fetchOneGlobalRating({deviceId: id})
@@ -66,11 +64,7 @@ const DevicePage = () => {
                 setFetchRatingCount(data.ratingCount)
             })
     }, [id])
-    //console.log(isRating)
-    //console.log(isRatingCount)
 
-
-    // console.log(isRating)
     useEffect(() => {
         try {
             let sumRate = 0
@@ -103,10 +97,6 @@ const DevicePage = () => {
             // .then(() => {setPersonalRating(0); setMiddleRating(0)})
             .catch(() => console.log('error'))
     }
-
-    // console.log(middleRating)
-    // console.log(personalRating)
-    // console.log(isBasketCount)
 
     return (
         <Container className="mt-3">
