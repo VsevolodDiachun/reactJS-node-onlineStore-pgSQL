@@ -2,7 +2,6 @@ const {Rating} = require("../DataBase/models");
 const ApiError = require("../error/ApiError");
 const {Sequelize} = require("sequelize");
 
-
 class ratingController {
     async create(req, res, next) {
         try {
@@ -23,7 +22,6 @@ class ratingController {
                         .catch(e => res.json('Rating error3'))
                 }
             }
-
         } catch (e) {
             console.log("Rating create error")
         }
@@ -35,8 +33,6 @@ class ratingController {
         await Rating.findOne({where: {userId, deviceId}})
             .then(data => res.json(data))
             .catch(() => res.json('error'))
-
-
     }
 
     async getOneGlobal(req, res, next) {
@@ -75,7 +71,6 @@ class ratingController {
                 .then(data => res.json([ratingData, data]))
                 .catch(() => res.json('error'))
         } catch (e) {res.json('помилка')}
-
     }
 
     async destroy(req, res, next) {

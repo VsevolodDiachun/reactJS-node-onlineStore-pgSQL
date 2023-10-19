@@ -1,9 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
-import DeviceItem from "./DeviceItem";
 import BasketItem from "./BasketItem";
-import {devicesFromBasket, fetchBrand} from "../http/deviceAPI";
-import {useAction} from "../hooks/useAction";
 
 const BasketList = () => {
     const {isBasket} = useSelector(state => state.deviceReducer)

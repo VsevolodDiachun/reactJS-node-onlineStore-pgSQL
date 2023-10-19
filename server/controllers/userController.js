@@ -20,7 +20,7 @@ class UserController {
 
             const candidate = await User.findOne({where: {email}})
             if (candidate) {
-                return next(ApiError.badRequest('Користувач з таким імʼям вже зареїстрований'))
+                return next(ApiError.badRequest('Користувач з таким імʼям вже зареєстрований'))
             }
 
             const hashPassword = await bcrypt.hash(password, 5)
@@ -49,7 +49,6 @@ class UserController {
 
     async auth(req, res, next) {
         const {id, email, role} = req.user
-
         const token = generateJwt(id, email, role)
         return res.json({token})
     }
@@ -73,7 +72,7 @@ class UserController {
                 .then(delUser => res.json({message: delUser ? `Запис '${login}' з таблиці видалено.` : "Помилка, поля з таким email не існує."}))
                 .catch(e => next(ApiError.internal("Помилка, поля з таким email не існує.")))
         } catch (e) {
-            next(ApiError.badRequest('123'))
+            next(ApiError.badRequest('error destroy'))
         }
     }
 }

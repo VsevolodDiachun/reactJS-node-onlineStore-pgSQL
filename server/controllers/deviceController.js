@@ -21,7 +21,6 @@ class DeviceController {
                     DeviceInfo.create({title: i.title, description: i.description, deviceId: device.id})
                 })
             }
-
             return res.json(device)
         } catch (e) {
             return next(e)
@@ -47,7 +46,6 @@ class DeviceController {
             page = page || 1
             limit = limit || 9
             let offset = page * limit - limit
-
             let device
             let ratingByDevice
             let ratingByCount
@@ -85,9 +83,7 @@ class DeviceController {
                     .then(data => findRatingByDevices(data))
             }
 
-
             let countData = []
-
             const deviceItem = device.rows.map(item => item.id)
 
             if (userId) {
@@ -126,7 +122,6 @@ class DeviceController {
         try {
             const {id} = req.params
             const deviceName = await Device.findOne({where: {id}})
-
             const filename = deviceName.img;
             const filePath = path.resolve(__dirname, '..', 'static', filename);
 

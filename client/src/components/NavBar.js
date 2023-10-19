@@ -21,12 +21,10 @@ const NavBar = () => {
     return (
         <Navbar bg="dark" variant="dark" >
             <Container>
-                <NavLink style={{color: 'white'}} to={SHOP_ROUTE}>Купи девайс</NavLink>
+                <NavLink style={{color: 'white', textDecoration: 'none', margin: '0px 10px'}} to={SHOP_ROUTE}>baryga.net</NavLink>
                 {isAuth ?
                     <Nav>
-                        <h5
-                            style={{color: 'white', margin: 'auto'}}
-                        >
+                        <h5 style={{color: 'white', margin: 'auto'}}>
                             {isEmail}
                         </h5>
                         {isRole === 'ADMIN' && <Button

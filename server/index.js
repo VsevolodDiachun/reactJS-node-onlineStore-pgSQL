@@ -15,7 +15,6 @@ app.use(fileUpload({}))
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use('/api', router) //(req,res,next) => next(err)
 
-
 app.use(errorHandler)
 const start = async () => {
     try {

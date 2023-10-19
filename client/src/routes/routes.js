@@ -7,7 +7,6 @@ import DevicePage from "../pages/DevicePage";
 import ErrorPage from "../pages/ErrorPage";
 import Layout from "../pages/Layout";
 
-
 const protectedRoutes = [
     {
         path: '/',

@@ -48,8 +48,6 @@ export const fetchOneDevice = async (id) => {
     return data
 }
 
-//BASKET
-
 //BASKET_DEVICES
 
 export const devicesFromBasket = async (basket) => {

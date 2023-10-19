@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Button, Card, Col, Image} from "react-bootstrap";
@@ -7,6 +8,7 @@ import {useSelector} from "react-redux";
 import {createBasketDevice, deleteSelectDevice, devicesFromBasket} from "../http/deviceAPI";
 import {useAction} from "../hooks/useAction";
 import basketIcon from '../assets/basket.png'
+import { toast } from 'react-toastify';
 
 const BasketItem = (basket) => {
     basket = basket.device
@@ -17,7 +19,6 @@ const BasketItem = (basket) => {
 
     const [basketCount, setBasketCount] = useState('0')
     const [globalRating, setGlobalRating] = useState(0);
-    const [rating, setRating] = useState(0);
     useEffect(() => {
         try {
             const devicesCount = isBasketCount.filter(data => data.deviceId === basket.id)
@@ -28,15 +29,7 @@ const BasketItem = (basket) => {
 
 
     useEffect(() => {
-        if (isUserId) {
-            try { //auth
-                const ratingGoodsCurrentUser = isRating.filter(data => data.userId === isUserId)
-                const ratingGoodsCurrentUserFiltered = ratingGoodsCurrentUser.filter(data => data.deviceId === basket.id)
-                setRating(ratingGoodsCurrentUserFiltered[0].rate)
-            } catch (e) {
-            }
 
-        }
         try {
             const ratingGoodsCurrentFiltered = isRating.filter(data => data.deviceId === basket.id)
             const ratingCountFiltered = isRatingCount.filter(data => data.deviceId === basket.id)
@@ -56,25 +49,25 @@ const BasketItem = (basket) => {
 
     const delDevice = () => {
         deleteSelectDevice({deviceId: basket.id, userId: isUserId})
-            .then(data => console.log(data))
             .then(() => devicesFromBasket({id: isUserId}))
             .then(data => {ASetBasket(data.devicesData); ASetBasketCount(data.countData)})
-            .catch(() => console.log('errorA'))
+            .catch(() => toast.error("ERROR: delete device"))
     }
 
     const addInBasket = () => {
         createBasketDevice({id: isUserId, deviceId: basket.id})
-            .then(data => console.log(data))
             .then(() => devicesFromBasket({id: isUserId}))
             .then(data => {ASetBasket(data.devicesData); ASetBasketCount(data.countData)})
-            .catch(() => console.log('error'))
+            .catch(() => toast.error("ERROR: add in basket"))
     }
 
-    const minusOrDelete = () => {if (basketCount > 1) {
-        return 'Мінуснути'
-    }else {
-        return 'Видалити'
-    }}
+    const minusOrDelete = () => {
+        if (basketCount > 1) {
+            return 'Мінуснути'
+        } else {
+            return 'Видалити'
+        }
+    }
 
     return (
         <Col className="mt-3 me-3"

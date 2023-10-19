@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {ListGroup} from "react-bootstrap";
 import {useAction} from "../hooks/useAction";
 
-
 const TypeBar = () => {
     const {isTypes, isSelectedType} = useSelector(state => state.deviceReducer)
     const {ASetSelectedType} = useAction()

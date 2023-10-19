@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import {Form, Button, Dropdown, Row, Col} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import {useAction} from "../../hooks/useAction";
 import {useEffect} from "react";
-import {createDevice, fetchBrand, fetchDevice, fetchTypes} from "../../http/deviceAPI";
+import {createDevice, fetchBrand, fetchTypes} from "../../http/deviceAPI";
 
 const CreateType = ({show, onHide}) => {
     const {isTypes, isBrands, isSelectedType, isSelectedBrand} = useSelector(state => state.deviceReducer)
@@ -12,8 +13,6 @@ const CreateType = ({show, onHide}) => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [file, setFile] = useState(null)
-    const [brand, setBrand] = useState(null)
-    const [type, setType] = useState(null)
     const [info, setInfo] = useState([])
 
     useEffect(() => {
@@ -56,7 +55,7 @@ const CreateType = ({show, onHide}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить пристрій
+                    <p>Добавити пристрій</p>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -133,7 +132,7 @@ const CreateType = ({show, onHide}) => {
                                     variant={"outline-danger"}
                                     onClick={() => removeInfo(i.number)}
                                 >
-                                    Видалити
+                                    <p>Видалити</p>
                                 </Button>
                             </Col>
                         </Row>

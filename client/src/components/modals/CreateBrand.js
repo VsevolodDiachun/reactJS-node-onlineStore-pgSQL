@@ -8,7 +8,7 @@ const CreateBrand = ({show, onHide}) => {
     const [value, setValue] = useState('')
 
     const addBrand = () => {
-        createBrand({name: value}).then(data => {
+        createBrand({name: value}).then(() => {
             setValue('')
             onHide()
         })
@@ -22,7 +22,7 @@ const CreateBrand = ({show, onHide}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавити бренд
+                    <p>Добавити бренд</p>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

@@ -33,8 +33,6 @@ class BasketDevicesController {
             .then(data => devicesData = data)
             .catch(e => next(ApiError.badRequest("BasketDevice помилка пошуку")))
 
-
-
         new Promise((resolve) => {resolve(basketData)})
             .then(arrIdDevice => BasketDevice.findAll(
                 {attributes:
@@ -55,7 +53,6 @@ class BasketDevicesController {
             })
             .catch(e => next(ApiError.badRequest("BasketDevice помилка пошуку")))
 
-
         let ratingByDevice
         let ratingByCount
 
@@ -75,8 +72,6 @@ class BasketDevicesController {
             .catch(() => next(ApiError.badRequest("BasketDevice помилка пошуку")))
     }
 
-
-
     async getOneDFB(req, res, next) {
         const {userId, deviceId} = req.body
         let basId = 0
@@ -95,7 +90,6 @@ class BasketDevicesController {
                     group: ['deviceId'],}))
             .then(countData => res.json(countData))
             .catch(() => next(ApiError.badRequest("BasketDevice помилка пошуку")))
-
     }
 
     async allData(req, res, next) {
@@ -135,7 +129,6 @@ class BasketDevicesController {
                 where: { deviceId: arrIdDevice },
                 group: ['deviceId'],}))
             .then(data => res.json(data))
-
     }
 
     async destroy(req, res, next) {

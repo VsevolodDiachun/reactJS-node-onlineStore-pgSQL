@@ -6,7 +6,7 @@ class BasketController {
         const {basketId, deviceId} = req.body
         await BasketDevice.create({basketId, deviceId})
             .then(() => res.json({message: 'id присвоїно'}))
-            .catch(e => next(ApiError.badRequest('BasketControllerDevice ERROR')))
+            .catch(() => next(ApiError.badRequest('BasketControllerDevice ERROR')))
     }
 
     async getAll(req, res, next) {
